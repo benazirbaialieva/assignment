@@ -1,0 +1,33 @@
+{
+  "name": "fintechproject",
+  "version": "1.0.0",
+  "description": "Automation framework for fintech company that processes financial transactions through a microservices architecture.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:bdd": "cucumber-js",
+    "test:bdd:headless": "HEADLESS=true cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benazirbaialieva/assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benazirbaialieva/assignment/issues"
+  },
+  "homepage": "https://github.com/benazirbaialieva/assignment#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
+    "@faker-js/faker": "^10.6.0",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
