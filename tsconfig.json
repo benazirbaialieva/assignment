@@ -3,13 +3,24 @@
     "target": "ES2022",
     "module": "CommonJS",
     "moduleResolution": "node",
-    "lib": ["ES2022", "DOM"],
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "noEmit": true
   },
-  "include": ["pages", "features", "utils", "fixtures", "tests", "e2e", "playwright.config.ts"]
+  "include": [
+    "pages",
+    "features",
+    "utils",
+    "e2e",
+    "playwright.config.ts"
+  ]
 }

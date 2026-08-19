@@ -1,8 +1,6 @@
 import { faker } from '@faker-js/faker';
 
 export interface RegistrationUser {
-  firstName: string;
-  lastName: string;
   fullName: string;
   email: string;
 }
@@ -22,8 +20,6 @@ export function generateUser(): RegistrationUser {
   const lastName = faker.person.lastName();
 
   return {
-    firstName,
-    lastName,
     fullName: `${firstName} ${lastName}`,
     email: `${toEmailPart(firstName)}.${toEmailPart(lastName)}@gmail.com`,
   };

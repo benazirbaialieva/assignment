@@ -1,34 +1,24 @@
 import { Locator, Page } from '@playwright/test';
 
-export type AccountType = 'basic' | 'premium' | 'business';
-
 export class RegistrationPage {
   readonly page: Page;
 
-  readonly pageTitle: Locator;
   readonly form: Locator;
   readonly fullNameInput: Locator;
   readonly emailInput: Locator;
   readonly accountTypeSelect: Locator;
   readonly createAccountButton: Locator;
   readonly errorBanner: Locator;
-  readonly nameError: Locator;
-  readonly emailError: Locator;
-  readonly accountTypeError: Locator;
 
   constructor(page: Page) {
     this.page = page;
 
-    this.pageTitle = page.getByTestId('page-title');
     this.form = page.getByTestId('register-form');
     this.fullNameInput = page.getByTestId('name-input');
     this.emailInput = page.getByTestId('email-input');
     this.accountTypeSelect = page.getByTestId('account-type-select');
     this.createAccountButton = page.getByTestId('register-submit');
     this.errorBanner = page.getByTestId('register-error');
-    this.nameError = page.getByTestId('error-name');
-    this.emailError = page.getByTestId('error-email');
-    this.accountTypeError = page.getByTestId('error-accountType');
   }
 
   async open(): Promise<void> {
@@ -43,6 +33,10 @@ export class RegistrationPage {
     await this.emailInput.fill(email);
   }
 
+  /**
+   * Picks one of the offered account types: basic, premium or business.
+   * Accepts either the option value ("basic") or its visible label ("Basic").
+   */
   async chooseAccountType(type: string): Promise<void> {
     await this.accountTypeSelect.selectOption(type.trim().toLowerCase());
   }
@@ -57,12 +51,5 @@ export class RegistrationPage {
     await this.fillEmail(email);
     await this.chooseAccountType(accountType);
     await this.clickCreateAccount();
-  }
-
-  /** All account types the select currently offers, as option values. */
-  async accountTypeOptions(): Promise<string[]> {
-    return this.accountTypeSelect.locator('option').evaluateAll((options) =>
-      options.map((option) => (option as HTMLOptionElement).value),
-    );
   }
 }
