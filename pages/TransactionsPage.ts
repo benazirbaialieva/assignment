@@ -1,11 +1,5 @@
-import { Locator, Page, expect } from '@playwright/test';
-
-/** Renders an amount the way the dashboard does, e.g. 1250 -> "$1,250.00". */
-function formatMoney(amount: string | number): string {
-  if (typeof amount === 'string' && amount.trim().startsWith('$')) return amount.trim();
-  const value = typeof amount === 'number' ? amount : Number(amount.replace(/[$,\s]/g, ''));
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
-}
+import { Locator, Page } from '@playwright/test';
+import { expect } from '../utils/assertions';
 
 /** The dashboard: account summary and the "New transaction" form. */
 export class TransactionsPage {
@@ -51,7 +45,7 @@ export class TransactionsPage {
 
   /** Asserts the account summary shows the given balance, e.g. 900 or "$900.00". */
   async verifyAvailableBalance(expected: string | number): Promise<void> {
-    await expect(this.availableBalance).toHaveText(formatMoney(expected));
+    await expect(this.availableBalance).toShowMoney(expected);
   }
 
   async fillAmount(amount: string | number): Promise<void> {

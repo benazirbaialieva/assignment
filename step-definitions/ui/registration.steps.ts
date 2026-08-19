@@ -1,7 +1,7 @@
 import { Given, Then, When } from '@cucumber/cucumber';
-import { expect } from '@playwright/test';
-import { PlaywrightWorld } from '../support/world';
-import { generateUser } from '../../utils/testData';
+import { expect } from '../../utils/assertions';
+import { PlaywrightWorld } from '../../utils/support/world';
+import { buildUser } from '../../utils/factories';
 
 Given('I am on the registration page', async function (this: PlaywrightWorld) {
   await this.registrationPage.open();
@@ -9,7 +9,7 @@ Given('I am on the registration page', async function (this: PlaywrightWorld) {
 });
 
 When('I enter a randomly generated full name', async function (this: PlaywrightWorld) {
-  this.user = generateUser();
+  this.user = buildUser();
   await this.registrationPage.fillFullName(this.user.fullName);
 });
 

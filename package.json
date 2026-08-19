@@ -7,9 +7,12 @@
     "test": "tests"
   },
   "scripts": {
-    "test:e2e": "playwright test",
-    "test:bdd": "cucumber-js",
-    "test:bdd:headless": "HEADLESS=true cucumber-js"
+    "test": "cucumber-js",
+    "test:ui": "cucumber-js --tags \"not @api\"",
+    "test:api": "cucumber-js --tags @api",
+    "test:headless": "HEADLESS=true cucumber-js",
+    "clean:reports": "rm -rf reports",
+    "test:run": "./run-tests.sh"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
     "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.62.1",
     "@types/node": "^26.2.0",
+    "dotenv": "^17.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }

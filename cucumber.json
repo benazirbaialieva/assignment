@@ -1,9 +1,26 @@
 {
   "default": {
-    "requireModule": ["ts-node/register"],
-    "require": ["features/support/**/*.ts", "features/step-definitions/**/*.ts"],
-    "paths": ["features/**/*.feature"],
-    "format": ["progress-bar", "html:cucumber-report.html"],
-    "formatOptions": { "snippetInterface": "async-await" }
+    "requireModule": [
+      "ts-node/register"
+    ],
+    "require": [
+      "utils/support/**/*.ts",
+      "step-definitions/**/*.ts"
+    ],
+    "paths": [
+      "features/**/*.feature"
+    ],
+    "format": [
+      "progress",
+      "summary",
+      "html:reports/cucumber-report.html",
+      "json:reports/cucumber-report.json",
+      "junit:reports/junit-report.xml",
+      "message:reports/cucumber-messages.ndjson"
+    ],
+    "formatOptions": {
+      "snippetInterface": "async-await",
+      "printAttachments": false
+    }
   }
 }

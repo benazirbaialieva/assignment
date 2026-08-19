@@ -18,9 +18,7 @@
   },
   "include": [
     "pages",
-    "features",
     "utils",
-    "e2e",
-    "playwright.config.ts"
+    "step-definitions"
   ]
 }

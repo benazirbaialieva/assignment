@@ -8,4 +8,8 @@ node_modules/
 /playwright/.auth/
 
 # Cucumber
+reports/
 cucumber-report.html
+
+# Local environment
+.env
