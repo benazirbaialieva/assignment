@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create your account — Northwind Pay</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" data-testid="brand">Northwind Pay</a>
+      <nav><a href="/login.html" data-testid="nav-login">Sign in</a></nav>
+    </header>
+
+    <main class="page page--narrow">
+      <h1 data-testid="page-title">Create your account</h1>
+      <p class="lede">Open an account to send and receive transfers.</p>
+
+      <p class="banner" data-testid="register-error" role="alert" hidden></p>
+
+      <form class="card" data-testid="register-form" novalidate>
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" data-testid="name-input" autocomplete="name" />
+        <p class="field-error" data-field-error="name" data-testid="error-name" hidden></p>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" data-testid="email-input" autocomplete="email" />
+        <p class="field-error" data-field-error="email" data-testid="error-email" hidden></p>
+
+        <label for="accountType">Account type</label>
+        <select id="accountType" name="accountType" data-testid="account-type-select">
+          <option value="basic">Basic</option>
+          <option value="premium">Premium</option>
+          <option value="business">Business</option>
+        </select>
+        <p class="field-error" data-field-error="accountType" data-testid="error-accountType" hidden></p>
+
+        <button type="submit" data-testid="register-submit">Create account</button>
+      </form>
+    </main>
+
+    <script type="module" src="/js/register.js"></script>
+  </body>
+</html>

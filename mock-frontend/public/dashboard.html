@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard — Northwind Pay</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/dashboard.html" data-testid="brand">Northwind Pay</a>
+      <nav>
+        <span data-testid="user-name"></span>
+        <button type="button" class="link" data-testid="logout-button">Sign out</button>
+      </nav>
+    </header>
+
+    <main class="page">
+      <p class="banner" data-testid="dashboard-error" role="alert" hidden></p>
+
+      <section class="card card--summary" data-testid="account-summary">
+        <p class="label">Available balance</p>
+        <p class="balance" data-testid="account-balance">—</p>
+        <dl class="meta">
+          <div><dt>Account id</dt><dd data-testid="account-id">—</dd></div>
+          <div><dt>Type</dt><dd data-testid="account-type">—</dd></div>
+          <div><dt>Email</dt><dd data-testid="account-email">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="columns">
+        <div>
+          <h2>New transaction</h2>
+          <p class="banner" data-testid="transaction-error" role="alert" hidden></p>
+          <p class="banner" data-testid="transaction-success" role="status" hidden></p>
+
+          <form class="card" data-testid="transaction-form" novalidate>
+            <label for="type">Type</label>
+            <select id="type" name="type" data-testid="transaction-type">
+              <option value="transfer">Transfer</option>
+              <option value="deposit">Deposit</option>
+              <option value="withdrawal">Withdrawal</option>
+            </select>
+            <p class="field-error" data-field-error="type" data-testid="error-type" hidden></p>
+
+            <label for="amount">Amount (USD)</label>
+            <input id="amount" name="amount" type="text" inputmode="decimal" data-testid="transaction-amount" />
+            <p class="field-error" data-field-error="amount" data-testid="error-amount" hidden></p>
+
+            <div data-testid="recipient-field">
+              <label for="recipientId">Recipient account id</label>
+              <input id="recipientId" name="recipientId" type="text" data-testid="transaction-recipient" placeholder="usr_…" />
+              <p class="field-error" data-field-error="recipientId" data-testid="error-recipientId" hidden></p>
+            </div>
+
+            <label for="description">Description <span class="optional">(optional)</span></label>
+            <input id="description" name="description" type="text" data-testid="transaction-description" />
+            <p class="field-error" data-field-error="description" data-testid="error-description" hidden></p>
+
+            <button type="submit" data-testid="transaction-submit">Send transaction</button>
+          </form>
+        </div>
+
+        <div>
+          <h2>Recent activity</h2>
+          <p class="empty" data-testid="transactions-empty" hidden>No transactions yet.</p>
+          <table class="table" data-testid="transactions-table">
+            <thead>
+              <tr><th>Date</th><th>Type</th><th>Amount</th><th>Status</th></tr>
+            </thead>
+            <tbody data-testid="transactions-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/js/dashboard.js"></script>
+  </body>
+</html>

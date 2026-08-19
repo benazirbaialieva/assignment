@@ -1,6 +1,7 @@
 import express from 'express';
 import { config } from './config.js';
 import { requestContext } from './middleware/requestContext.js';
+import { cors } from './middleware/cors.js';
 import { chaos } from './middleware/chaos.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 import { usersRouter } from './routes/users.js';
@@ -16,6 +17,7 @@ export function createApp() {
   const app = express();
 
   app.disable('x-powered-by');
+  app.use(cors);
   app.use(express.json({ limit: '100kb' }));
   app.use(requestContext);
   app.use(chaos);

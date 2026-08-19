@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign in — Northwind Pay</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/config.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" data-testid="brand">Northwind Pay</a>
+      <nav><a href="/" data-testid="nav-register">Create account</a></nav>
+    </header>
+
+    <main class="page page--narrow">
+      <h1 data-testid="page-title">Sign in</h1>
+      <p class="lede">Enter the account id and access token issued at signup.</p>
+
+      <p class="banner" data-testid="login-error" role="alert" hidden></p>
+
+      <form class="card" data-testid="login-form" novalidate>
+        <label for="userId">Account id</label>
+        <input id="userId" name="userId" type="text" data-testid="user-id-input" placeholder="usr_…" />
+        <p class="field-error" data-field-error="userId" data-testid="error-userId" hidden></p>
+
+        <label for="token">Access token</label>
+        <input id="token" name="token" type="password" data-testid="token-input" placeholder="tok_…" />
+        <p class="field-error" data-field-error="token" data-testid="error-token" hidden></p>
+
+        <button type="submit" data-testid="login-submit">Sign in</button>
+      </form>
+    </main>
+
+    <script type="module" src="/js/login.js"></script>
+  </body>
+</html>

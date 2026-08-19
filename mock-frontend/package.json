@@ -1,0 +1,12 @@
+{
+  "name": "@fintech/mock-frontend",
+  "version": "1.0.0",
+  "description": "Mock web client for the fintech API, used by the UI test suite",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": { "node": ">=18" }
+}
